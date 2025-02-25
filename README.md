@@ -11,3 +11,18 @@ dotnet new gitignore
 ```
 dotnet new sln
 ```
+
+- How to create project
+1. Create project, [learn more](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-new).
+```
+# For minimal API
+dotnet new webapi --output Presentation
+
+# For controller
+dotnet new webapi --output Presentation --use-controllers
+```
+
+2. Link project to solution, [learn more](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-sln).
+```
+dotnet sln add Presentation
+```
