@@ -3,18 +3,18 @@
 
 ## What to learn
 ### How to create `.gitignore`
-```
+```bash
 dotnet new gitignore
 ```
 
 ### How to create `*.sln`
-```
+```bash
 dotnet new sln
 ```
 
 ### How to create project
 1. Create project, [learn more](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-new).
-```
+```bash
 # For creating a minimal API
 dotnet new webapi --output Presentation
 
@@ -23,13 +23,13 @@ dotnet new webapi --output Presentation --use-controllers
 ```
 
 2. Link project to solution, [learn more](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-sln).
-```
+```bash
 dotnet sln add Presentation
 ```
 
 ### How to run project
 #### Using [.NET CLI](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-run).
-```
+```bash
 # For a normal run
 dotnet run --project .\Presentation\
 
@@ -38,7 +38,7 @@ dotnet watch run --project .\Presentation\
 ```
 
 - With SSL certificate, [learn more](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?tabs=visual-studio-code#run-the-project). The `dotnet dev-certs` command [docs](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-dev-certs)
-```
+```bash
 dotnet watch run --project .\Presentation\ --launch-profile https
 ```
 
