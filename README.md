@@ -46,3 +46,30 @@ dotnet watch run --project .\Presentation\ --launch-profile https
 > When Visual Studio Code requests that you add assets to build and debug the project, select **Yes**. If Visual Studio Code doesn't offer to add build and debug assets, select **View > Command Palette** and type "`.NET`" into the search box. From the list of commands, select the `.NET: Generate Assets for Build and Debug` command.
 
 Press `F5` on the keyboard to run the project.
+
+### How to add project-to-project (P2P) references.
+[Learn more](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-add-reference).
+```bash
+dotnet add Presentation reference Application
+```
+- For example: Presentation layer -> Business layer -> Data Access layer.
+- Here, `->` indicates the reference direction of the project.
+
+Normally, the Presentation layer can directly access the Data Access layer, but to separate this access, you must configure a `Directory.Build.props` file with the following attribute:
+
+```xml
+<Project>
+  <ItemDefinitionGroup>
+    <ProjectReference>
+      <PrivateAssets>all</PrivateAssets>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+</Project>
+```
+
+Alternatively, this can be configured in the `*.csproj` file as follows:
+```xml
+<ProjectReference Include="..\Business.csproj" PrivateAssets="All" />
+```
+
+
