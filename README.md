@@ -2,6 +2,29 @@
 > **Attention**: The minimum .NET SDK version is [9.0.2](https://dotnet.microsoft.com/en-us/download/dotnet/9.0).
 
 ## What to learn
+### How to format code
+```bash
+dotnet format .
+```
+
+You can use CSharpier
+```bash
+# Create a manifest
+dotnet new tool-manifest
+
+# Install csharpier
+dotnet tool install csharpier
+
+# Format code
+dotnet csharpier .
+```
+
+You can use both and waste more than 10 seconds of your life.
+```bash
+dotnet csharpier .
+dotnet format .
+```
+
 ### How to create `.gitignore`
 ```bash
 dotnet new gitignore
