@@ -1,3 +1,5 @@
+using Scalar.AspNetCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,6 +15,18 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseSwaggerUi(options =>
+    {
+        options.DocumentPath = "/openapi/v1.json";
+    });
+    app.MapScalarApiReference(options =>
+    {
+        Random random = new();
+        ScalarTheme[] themes = Enum.GetValues<ScalarTheme>();
+        ScalarTheme randomTheme = themes[random.Next(themes.Length)];
+        options.WithTitle($"{options.Title} | {{documentName}} | {randomTheme} theme");
+        options.WithTheme(randomTheme);
+    });
 }
 
 app.UseHttpsRedirection();

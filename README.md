@@ -95,4 +95,36 @@ Alternatively, this can be configured in the `*.csproj` file as follows:
 <ProjectReference Include="..\Business.csproj" PrivateAssets="All" />
 ```
 
+### How to test
+#### Swagger
+Install `NSwag.AspNetCore`, [learn more](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?tabs=visual-studio-code#test-the-project).
+```bash
+dotnet add Presentation package NSwag.AspNetCore
+```
+
+Open OpenAPI 3.0 document serving middleware, Available at:
+```
+http(s)://localhost:<port>/openapi/v1.json
+```
+
+Open Swagger web to interact with the document, Available at:
+```
+http(s)://localhost:<port>/swagger
+```
+
+#### Scalar
+Install `Scalar.AspNetCore`, [learn more](https://www.nuget.org/packages/Scalar.AspNetCore).
+```bash
+dotnet package search Scalar.AspNetCore
+```
+
+Open Scalar web to interact with the document, Available at:
+```
+http(s)://localhost:<port>/scalar
+```
+
+Further, we can use additional `{documentName}`. Here, `{documentName}` can be `v1`, `v2`, ... , `vn`. Available at:
+```
+http(s)://localhost:<port>/scalar/{documentName}
+```
 
