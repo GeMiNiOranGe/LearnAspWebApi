@@ -1,6 +1,21 @@
 # LearnAspWebApi
 > **Attention**: The minimum .NET SDK version is [9.0.2](https://dotnet.microsoft.com/en-us/download/dotnet/9.0).
 
+## Table of Contents
+* [Table of Contents](#Table-of-Contents)
+* [What to learn](#What-to-learn)
+  * [How to format code](#How-to-format-code)
+  * [How to create `.gitignore`](#How-to-create-gitignore)
+  * [How to create `*.sln`](#How-to-create-sln)
+  * [How to create project](#How-to-create-project)
+  * [How to run project](#How-to-run-project)
+    * [Using .NET CLI](#Using-NET-CLI)
+    * [Using VSCode UI](#Using-VSCode-UI)
+  * [How to add project-to-project (P2P) references](#How-to-add-project-to-project-P2P-references)
+  * [How to test](#How-to-test)
+    * [Swagger](#Swagger)
+    * [Scalar](#Scalar)
+
 ## What to learn
 ### How to format code
 ```bash
@@ -70,7 +85,7 @@ dotnet watch run --project .\Presentation\ --launch-profile https
 
 Press `F5` on the keyboard to run the project.
 
-### How to add project-to-project (P2P) references.
+### How to add project-to-project (P2P) references
 [Learn more](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-add-reference).
 ```bash
 dotnet add Presentation reference Application
