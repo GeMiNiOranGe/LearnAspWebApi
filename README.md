@@ -54,30 +54,30 @@ dotnet new sln
 1. Create project, [learn more](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-new).
 ```bash
 # For creating a minimal API
-dotnet new webapi --output Presentation
+dotnet new webapi --output WebApi
 
 # For using controllers
-dotnet new webapi --output Presentation --use-controllers
+dotnet new webapi --output WebApi --use-controllers
 ```
 
 2. Link project to solution, [learn more](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-sln).
 ```bash
-dotnet sln add Presentation
+dotnet sln add WebApi
 ```
 
 ### How to run project
 #### Using [.NET CLI](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-run).
 ```bash
 # For a normal run
-dotnet run --project .\Presentation\
+dotnet run --project WebApi
 
 # For enabling hot-reloading
-dotnet watch run --project .\Presentation\
+dotnet watch run --project WebApi
 ```
 
 - With SSL certificate, [learn more](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?tabs=visual-studio-code#run-the-project). The `dotnet dev-certs` command [docs](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-dev-certs)
 ```bash
-dotnet watch run --project .\Presentation\ --launch-profile https
+dotnet watch run --project WebApi --launch-profile https
 ```
 
 #### Using [VSCode UI](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?tabs=visual-studio-code#create-a-web-api-project).
@@ -88,7 +88,7 @@ Press `F5` on the keyboard to run the project.
 ### How to add project-to-project (P2P) references
 [Learn more](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-add-reference).
 ```bash
-dotnet add Presentation reference Application
+dotnet add WebApi reference Application
 ```
 - For example: Presentation layer -> Business layer -> Data Access layer.
 - Here, `->` indicates the reference direction of the project.
@@ -114,7 +114,7 @@ Alternatively, this can be configured in the `*.csproj` file as follows:
 #### Swagger
 Install `NSwag.AspNetCore`, [learn more](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?tabs=visual-studio-code#test-the-project).
 ```bash
-dotnet add Presentation package NSwag.AspNetCore
+dotnet add WebApi package NSwag.AspNetCore
 ```
 
 Open OpenAPI 3.0 document serving middleware, Available at:
