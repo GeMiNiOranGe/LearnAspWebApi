@@ -165,7 +165,7 @@ Install EF Core, [Learn more](https://www.nuget.org/packages/Microsoft.EntityFra
 dotnet add Infrastructure package Microsoft.EntityFrameworkCore --version 9.0.2
 ```
 
-Create a dbcontext
+Create a dbcontext, [how to scaffold](https://learn.microsoft.com/en-us/ef/core/cli/dotnet#dotnet-ef-dbcontext-scaffold).
 ```bash
 dotnet ef dbcontext scaffold `
   "Name=ConnectionStrings:Development" `
