@@ -15,6 +15,7 @@
   * [How to test](#How-to-test)
     * [Swagger](#Swagger)
     * [Scalar](#Scalar)
+  * [How to add a database context](#How-to-add-a-database-context)
 
 ## What to learn
 ### How to format code
@@ -143,3 +144,36 @@ Further, we can use additional `{documentName}`. Here, `{documentName}` can be `
 http(s)://localhost:<port>/scalar/{documentName}
 ```
 
+### How to add a database context
+> The Microsoft.EntityFrameworkCore.Design package is required for either command-line or Package Manager Console-based tooling, and is a dependency of dotnet-ef and Microsoft.EntityFrameworkCore.Tools.
+
+Install EF Design, [learn more](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Design).
+
+```bash
+dotnet add WebApi package Microsoft.EntityFrameworkCore.Design --version 9.0.2
+```
+
+CLI [documentation](https://learn.microsoft.com/en-us/ef/core/cli/dotnet).
+
+Install EF CLI as a global tool, [learn more](https://www.nuget.org/packages/dotnet-ef).
+```bash
+dotnet tool install --global dotnet-ef --version 9.0.2
+```
+
+Install EF Core, [Learn more](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore).
+```bash
+dotnet add Infrastructure package Microsoft.EntityFrameworkCore --version 9.0.2
+```
+
+Create a dbcontext
+```bash
+dotnet ef dbcontext scaffold `
+  "Name=ConnectionStrings:Development" `
+  Microsoft.EntityFrameworkCore.SqlServer `
+  --project Infrastructure `
+  --startup-project WebApi `
+  --context LearnAspWebApiContext `
+  --context-dir Data `
+  --output-dir Models `
+  --no-onconfiguring
+```
