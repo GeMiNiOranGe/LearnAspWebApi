@@ -1,6 +1,6 @@
 using Infrastructure;
-
 using Presentation;
+using UseCases;
 
 using Scalar.AspNetCore;
 
@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Configure DI layers following Clean Architecture
 builder.Services.AddInfrastructure();
 builder.Services.AddPresentation();
+builder.Services.AddUseCases();
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
