@@ -1,5 +1,6 @@
+using Core.Interfaces;
 using Infrastructure.Data;
-
+using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,6 +12,8 @@ public static class DependencyInjection
     {
         services.AddDbContext<LearnAspWebApiContext>(options =>
             options.UseSqlServer("Name=ConnectionStrings:Development"));
+
+        services.AddScoped<IAccountRepository, AccountRepository>();
 
         return services;
     }
