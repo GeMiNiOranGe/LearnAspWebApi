@@ -22,4 +22,20 @@ public class AccountRepository(LearnAspWebApiContext context) : IAccountReposito
             }
         ).ToListAsync();
     }
+
+    public async Task<Account?> GetAccountByIdAsync(int id)
+    {
+        IQueryable<Account> query =
+            from account in _context.Accounts
+            where account.AccountId == id
+            select new Account
+            {
+                AccountId = account.AccountId,
+                Username = account.Username,
+                Password = account.Password,
+                EmployeeId = account.EmployeeId,
+            };
+
+        return await query.FirstOrDefaultAsync();
+    }
 }

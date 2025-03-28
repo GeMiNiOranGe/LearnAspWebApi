@@ -4,5 +4,7 @@ namespace Core.Interfaces;
 
 public interface IAccountUseCase
 {
-    public Task<IEnumerable<Account>> GetAccountsAsync();
+    Task<IEnumerable<Account>> GetAccountsAsync();
+
+    Task<Account?> GetAccountByIdAsync(int id);
 }

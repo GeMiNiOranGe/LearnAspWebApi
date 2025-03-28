@@ -11,4 +11,9 @@ public class AccountUseCase(IAccountRepository repository) : IAccountUseCase
     {
         return await _repository.GetAccountsAsync();
     }
+
+    public async Task<Account?> GetAccountByIdAsync(int id)
+    {
+        return await _repository.GetAccountByIdAsync(id);
+    }
 }
