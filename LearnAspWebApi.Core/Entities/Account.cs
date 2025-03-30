@@ -1,4 +1,4 @@
-namespace Core.Entities;
+namespace LearnAspWebApi.Core.Entities;
 
 public class Account
 {

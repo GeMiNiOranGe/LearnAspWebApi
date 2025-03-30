@@ -1,7 +1,7 @@
-using Core.Interfaces;
+using LearnAspWebApi.Core.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace UseCases;
+namespace LearnAspWebApi.UseCases;
 
 public static class DependencyInjection
 {

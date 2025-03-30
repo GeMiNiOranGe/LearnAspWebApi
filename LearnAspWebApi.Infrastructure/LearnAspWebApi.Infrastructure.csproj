@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\LearnAspWebApi.Core\LearnAspWebApi.Core.csproj" />
   </ItemGroup>
 
 </Project>

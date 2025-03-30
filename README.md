@@ -55,30 +55,30 @@ dotnet new sln
 1. Create project, [learn more](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-new).
 ```bash
 # For creating a minimal API
-dotnet new webapi --output WebApi
+dotnet new webapi --output LearnAspWebApi.WebApi
 
 # For using controllers
-dotnet new webapi --output WebApi --use-controllers
+dotnet new webapi --output LearnAspWebApi.WebApi --use-controllers
 ```
 
 2. Link project to solution, [learn more](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-sln).
 ```bash
-dotnet sln add WebApi
+dotnet sln add LearnAspWebApi.WebApi
 ```
 
 ### How to run project
 #### Using [.NET CLI](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-run).
 ```bash
 # For a normal run
-dotnet run --project WebApi
+dotnet run --project LearnAspWebApi.WebApi
 
 # For enabling hot-reloading
-dotnet watch run --project WebApi
+dotnet watch run --project LearnAspWebApi.WebApi
 ```
 
 - With SSL certificate, [learn more](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?tabs=visual-studio-code#run-the-project). The `dotnet dev-certs` command [docs](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-dev-certs)
 ```bash
-dotnet watch run --project WebApi --launch-profile https
+dotnet watch run --project LearnAspWebApi.WebApi --launch-profile https
 ```
 
 #### Using [VSCode UI](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?tabs=visual-studio-code#create-a-web-api-project).
@@ -89,7 +89,7 @@ Press `F5` on the keyboard to run the project.
 ### How to add project-to-project (P2P) references
 [Learn more](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-add-reference).
 ```bash
-dotnet add WebApi reference Application
+dotnet add LearnAspWebApi.WebApi reference LearnAspWebApi.UseCases
 ```
 - For example: Presentation layer -> Business layer -> Data Access layer.
 - Here, `->` indicates the reference direction of the project.
@@ -115,7 +115,7 @@ Alternatively, this can be configured in the `*.csproj` file as follows:
 #### Swagger
 Install `NSwag.AspNetCore`, [learn more](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?tabs=visual-studio-code#test-the-project).
 ```bash
-dotnet add WebApi package NSwag.AspNetCore
+dotnet add LearnAspWebApi.WebApi package NSwag.AspNetCore
 ```
 
 Open OpenAPI 3.0 document serving middleware, Available at:
@@ -150,7 +150,7 @@ http(s)://localhost:<port>/scalar/{documentName}
 Install EF Design, [learn more](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Design).
 
 ```bash
-dotnet add WebApi package Microsoft.EntityFrameworkCore.Design --version 9.0.2
+dotnet add LearnAspWebApi.WebApi package Microsoft.EntityFrameworkCore.Design --version 9.0.2
 ```
 
 CLI [documentation](https://learn.microsoft.com/en-us/ef/core/cli/dotnet).
@@ -162,7 +162,7 @@ dotnet tool install --global dotnet-ef --version 9.0.2
 
 Install EF Core, [Learn more](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore).
 ```bash
-dotnet add Infrastructure package Microsoft.EntityFrameworkCore --version 9.0.2
+dotnet add LearnAspWebApi.Infrastructure package Microsoft.EntityFrameworkCore --version 9.0.2
 ```
 
 Create a dbcontext, [how to scaffold](https://learn.microsoft.com/en-us/ef/core/cli/dotnet#dotnet-ef-dbcontext-scaffold).
@@ -170,8 +170,8 @@ Create a dbcontext, [how to scaffold](https://learn.microsoft.com/en-us/ef/core/
 dotnet ef dbcontext scaffold `
   "Name=ConnectionStrings:Development" `
   Microsoft.EntityFrameworkCore.SqlServer `
-  --project Infrastructure `
-  --startup-project WebApi `
+  --project LearnAspWebApi.Infrastructure `
+  --startup-project LearnAspWebApi.WebApi `
   --context LearnAspWebApiContext `
   --context-dir Data `
   --output-dir Models `

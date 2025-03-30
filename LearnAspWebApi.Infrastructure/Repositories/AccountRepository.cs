@@ -1,9 +1,9 @@
-using Core.Entities;
-using Core.Interfaces;
-using Infrastructure.Data;
+using LearnAspWebApi.Core.Entities;
+using LearnAspWebApi.Core.Interfaces;
+using LearnAspWebApi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repositories;
+namespace LearnAspWebApi.Infrastructure.Repositories;
 
 public class AccountRepository(LearnAspWebApiContext context) : IAccountRepository
 {

@@ -1,10 +1,10 @@
-using Core.Interfaces;
-using Infrastructure.Data;
-using Infrastructure.Repositories;
+using LearnAspWebApi.Core.Interfaces;
+using LearnAspWebApi.Infrastructure.Data;
+using LearnAspWebApi.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infrastructure;
+namespace LearnAspWebApi.Infrastructure;
 
 public static class DependencyInjection
 {

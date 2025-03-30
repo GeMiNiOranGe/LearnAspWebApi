@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{DC30D002-CA12-40DA-B0AE-EF6D39D23097}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnAspWebApi.WebApi", "LearnAspWebApi.WebApi\LearnAspWebApi.WebApi.csproj", "{DC30D002-CA12-40DA-B0AE-EF6D39D23097}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{105B8F1E-C631-4100-A062-F5FB3399145A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnAspWebApi.Infrastructure", "LearnAspWebApi.Infrastructure\LearnAspWebApi.Infrastructure.csproj", "{105B8F1E-C631-4100-A062-F5FB3399145A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{E49BADAC-FC5B-4403-8159-E19EB1557C51}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnAspWebApi.Presentation", "LearnAspWebApi.Presentation\LearnAspWebApi.Presentation.csproj", "{E49BADAC-FC5B-4403-8159-E19EB1557C51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases", "UseCases\UseCases.csproj", "{635A6E61-3B5F-4C21-8713-115F25786537}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnAspWebApi.UseCases", "LearnAspWebApi.UseCases\LearnAspWebApi.UseCases.csproj", "{635A6E61-3B5F-4C21-8713-115F25786537}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{08DAB4C1-1B1B-4F7B-8EE7-DDD6C2BEB25D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnAspWebApi.Core", "LearnAspWebApi.Core\LearnAspWebApi.Core.csproj", "{08DAB4C1-1B1B-4F7B-8EE7-DDD6C2BEB25D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTOs", "DTOs\DTOs.csproj", "{8F5F9962-B222-4E7E-9634-7632F2D6A25F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnAspWebApi.DTOs", "LearnAspWebApi.DTOs\LearnAspWebApi.DTOs.csproj", "{8F5F9962-B222-4E7E-9634-7632F2D6A25F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

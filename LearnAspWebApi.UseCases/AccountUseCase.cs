@@ -1,7 +1,7 @@
-using Core.Entities;
-using Core.Interfaces;
+using LearnAspWebApi.Core.Entities;
+using LearnAspWebApi.Core.Interfaces;
 
-namespace UseCases;
+namespace LearnAspWebApi.UseCases;
 
 public class AccountUseCase(IAccountRepository repository) : IAccountUseCase
 {

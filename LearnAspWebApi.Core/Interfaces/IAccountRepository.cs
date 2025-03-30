@@ -1,6 +1,6 @@
-using Core.Entities;
+using LearnAspWebApi.Core.Entities;
 
-namespace Core.Interfaces;
+namespace LearnAspWebApi.Core.Interfaces;
 
 public interface IAccountRepository
 {

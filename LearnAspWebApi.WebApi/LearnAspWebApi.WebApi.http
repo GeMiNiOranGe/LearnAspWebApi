@@ -1,0 +1,6 @@
+@LearnAspWebApi.WebApi_HostAddress = http://localhost:5152
+
+GET {{LearnAspWebApi.WebApi_HostAddress}}/account/
+Accept: application/json
+
+###

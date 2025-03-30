@@ -17,9 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Presentation\Presentation.csproj" />
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
-    <ProjectReference Include="..\UseCases\UseCases.csproj" />
+    <ProjectReference Include="..\LearnAspWebApi.Presentation\LearnAspWebApi.Presentation.csproj" />
+    <ProjectReference Include="..\LearnAspWebApi.Infrastructure\LearnAspWebApi.Infrastructure.csproj" />
+    <ProjectReference Include="..\LearnAspWebApi.UseCases\LearnAspWebApi.UseCases.csproj" />
   </ItemGroup>
 
 </Project>

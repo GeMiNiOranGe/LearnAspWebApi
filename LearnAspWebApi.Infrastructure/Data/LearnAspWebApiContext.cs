@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Infrastructure.Models;
+using LearnAspWebApi.Infrastructure.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Data;
+namespace LearnAspWebApi.Infrastructure.Data;
 
 public partial class LearnAspWebApiContext : DbContext
 {

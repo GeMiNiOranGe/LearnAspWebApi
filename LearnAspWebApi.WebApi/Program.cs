@@ -1,6 +1,6 @@
-using Infrastructure;
-using Presentation;
-using UseCases;
+using LearnAspWebApi.Infrastructure;
+using LearnAspWebApi.Presentation;
+using LearnAspWebApi.UseCases;
 
 using Scalar.AspNetCore;
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Infrastructure.Models;
+namespace LearnAspWebApi.Infrastructure.Models;
 
 public partial class Employee
 {
