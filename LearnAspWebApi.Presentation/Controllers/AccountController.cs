@@ -1,6 +1,5 @@
 using LearnAspWebApi.Core.Entities;
 using LearnAspWebApi.Core.Interfaces;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -8,7 +7,10 @@ namespace LearnAspWebApi.Presentation.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class AccountController(ILogger<AccountController> logger, IAccountUseCase useCase) : ControllerBase
+public class AccountController(
+    ILogger<AccountController> logger,
+    IAccountUseCase useCase
+) : ControllerBase
 {
     private readonly ILogger<AccountController> _logger = logger;
     private readonly IAccountUseCase _useCase = useCase;

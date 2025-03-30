@@ -5,7 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LearnAspWebApi.Infrastructure.Repositories;
 
-public class AccountRepository(LearnAspWebApiContext context) : IAccountRepository
+public class AccountRepository(LearnAspWebApiContext context)
+    : IAccountRepository
 {
     private readonly LearnAspWebApiContext _context = context;
 

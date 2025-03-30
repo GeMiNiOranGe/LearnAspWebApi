@@ -7,10 +7,10 @@ namespace LearnAspWebApi.Infrastructure.Data;
 
 public partial class LearnAspWebApiContext : DbContext
 {
-    public LearnAspWebApiContext(DbContextOptions<LearnAspWebApiContext> options)
-        : base(options)
-    {
-    }
+    public LearnAspWebApiContext(
+        DbContextOptions<LearnAspWebApiContext> options
+    )
+        : base(options) { }
 
     public virtual DbSet<Account> Accounts { get; set; }
 
@@ -26,17 +26,16 @@ public partial class LearnAspWebApiContext : DbContext
 
             entity.HasIndex(e => e.Username, "UK_Username").IsUnique();
 
-            entity.Property(e => e.EmployeeId)
+            entity
+                .Property(e => e.EmployeeId)
                 .HasMaxLength(10)
                 .IsUnicode(false);
-            entity.Property(e => e.Password)
-                .HasMaxLength(255)
-                .IsUnicode(false);
-            entity.Property(e => e.Username)
-                .HasMaxLength(255)
-                .IsUnicode(false);
+            entity.Property(e => e.Password).HasMaxLength(255).IsUnicode(false);
+            entity.Property(e => e.Username).HasMaxLength(255).IsUnicode(false);
 
-            entity.HasOne(d => d.Employee).WithOne(p => p.Account)
+            entity
+                .HasOne(d => d.Employee)
+                .WithOne(p => p.Account)
                 .HasForeignKey<Account>(d => d.EmployeeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Account_Employee");
@@ -46,7 +45,8 @@ public partial class LearnAspWebApiContext : DbContext
         {
             entity.ToTable("Employee");
 
-            entity.Property(e => e.EmployeeId)
+            entity
+                .Property(e => e.EmployeeId)
                 .HasMaxLength(10)
                 .IsUnicode(false);
             entity.Property(e => e.Name).HasMaxLength(50);

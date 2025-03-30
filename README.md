@@ -41,6 +41,11 @@ dotnet csharpier .
 dotnet format .
 ```
 
+Use CSharpier with a pre-commit hook, which must be installed before you can use it, [learn more](https://csharpier.com/docs/Pre-commit#huskynet).
+```bash
+dotnet husky install
+```
+
 ### How to create `.gitignore`
 ```bash
 dotnet new gitignore

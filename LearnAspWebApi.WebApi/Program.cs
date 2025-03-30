@@ -1,7 +1,6 @@
 using LearnAspWebApi.Infrastructure;
 using LearnAspWebApi.Presentation;
 using LearnAspWebApi.UseCases;
-
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,7 +28,9 @@ if (app.Environment.IsDevelopment())
         Random random = new();
         ScalarTheme[] themes = Enum.GetValues<ScalarTheme>();
         ScalarTheme randomTheme = themes[random.Next(themes.Length)];
-        options.WithTitle($"{options.Title} | {{documentName}} | {randomTheme} theme");
+        options.WithTitle(
+            $"{options.Title} | {{documentName}} | {randomTheme} theme"
+        );
         options.WithTheme(randomTheme);
     });
 }

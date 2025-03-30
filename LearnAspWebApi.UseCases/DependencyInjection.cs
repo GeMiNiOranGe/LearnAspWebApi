@@ -5,7 +5,9 @@ namespace LearnAspWebApi.UseCases;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddUseCases(this IServiceCollection services)
+    public static IServiceCollection AddUseCases(
+        this IServiceCollection services
+    )
     {
         // Add services to the container.
         services.AddScoped<IAccountUseCase, AccountUseCase>();
