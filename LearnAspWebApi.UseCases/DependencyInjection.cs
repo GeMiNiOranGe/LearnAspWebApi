@@ -11,6 +11,7 @@ public static class DependencyInjection
     {
         // Add services to the container.
         services.AddScoped<IAccountUseCase, AccountUseCase>();
+        services.AddScoped<IEmployeeUseCase, EmployeeUseCase>();
 
         return services;
     }
