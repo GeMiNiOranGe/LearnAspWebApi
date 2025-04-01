@@ -21,4 +21,11 @@ public class EmployeeController(
         IEnumerable<Employee> accounts = await _useCase.GetEmployeesAsync();
         return Ok(accounts);
     }
+
+    [HttpGet("{id}", Name = "GetEmployeeById")]
+    public async Task<ActionResult<Employee>> GetEmployeeById(string id)
+    {
+        Employee? account = await _useCase.GetEmployeeByIdAsync(id);
+        return account == null ? NotFound() : Ok(account);
+    }
 }

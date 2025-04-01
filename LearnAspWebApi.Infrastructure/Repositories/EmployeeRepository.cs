@@ -22,4 +22,19 @@ public class EmployeeRepository(LearnAspWebApiContext context)
             }
         ).ToListAsync();
     }
+
+    public async Task<Employee?> GetEmployeeByIdAsync(string id)
+    {
+        IQueryable<Employee> query =
+            from employee in _context.Employees
+            where employee.EmployeeId == id
+            select new Employee
+            {
+                EmployeeId = employee.EmployeeId,
+                Name = employee.Name,
+                DateOfBirth = employee.DateOfBirth,
+            };
+
+        return await query.FirstOrDefaultAsync();
+    }
 }

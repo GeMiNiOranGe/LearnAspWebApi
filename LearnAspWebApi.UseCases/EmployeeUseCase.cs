@@ -11,4 +11,9 @@ public class EmployeeUseCase(IEmployeeRepository repository) : IEmployeeUseCase
     {
         return await _repository.GetEmployeesAsync();
     }
+
+    public async Task<Employee?> GetEmployeeByIdAsync(string id)
+    {
+        return await _repository.GetEmployeeByIdAsync(id);
+    }
 }
