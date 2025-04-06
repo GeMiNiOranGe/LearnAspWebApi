@@ -13,13 +13,13 @@ public class AccountRepository(LearnAspWebApiContext context)
     public async Task<IEnumerable<Account>> GetAccountsAsync()
     {
         return await (
-            from accounts in _context.Accounts
+            from account in _context.Accounts
             select new Account
             {
-                AccountId = accounts.AccountId,
-                Username = accounts.Username,
-                Password = accounts.Password,
-                EmployeeId = accounts.EmployeeId,
+                AccountId = account.AccountId,
+                Username = account.Username,
+                Password = account.Password,
+                EmployeeId = account.EmployeeId,
             }
         ).ToListAsync();
     }

@@ -13,12 +13,12 @@ public class EmployeeRepository(LearnAspWebApiContext context)
     public async Task<IEnumerable<Employee>> GetEmployeesAsync()
     {
         return await (
-            from employees in _context.Employees
+            from employee in _context.Employees
             select new Employee
             {
-                EmployeeId = employees.EmployeeId,
-                Name = employees.Name,
-                DateOfBirth = employees.DateOfBirth,
+                EmployeeId = employee.EmployeeId,
+                Name = employee.Name,
+                DateOfBirth = employee.DateOfBirth,
             }
         ).ToListAsync();
     }
