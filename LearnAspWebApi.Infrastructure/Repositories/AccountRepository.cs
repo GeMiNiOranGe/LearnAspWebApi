@@ -12,31 +12,29 @@ public class AccountRepository(LearnAspWebApiContext context)
 
     public async Task<IEnumerable<Account>> GetAccountsAsync()
     {
-        return await (
-            from account in _context.Accounts
-            select new Account
+        IQueryable<Account> queryable = _context.Accounts.Select(
+            account => new Account
             {
                 AccountId = account.AccountId,
                 Username = account.Username,
                 Password = account.Password,
                 EmployeeId = account.EmployeeId,
             }
-        ).ToListAsync();
+        );
+        return await queryable.ToListAsync();
     }
 
     public async Task<Account?> GetAccountByIdAsync(int id)
     {
-        IQueryable<Account> query =
-            from account in _context.Accounts
-            where account.AccountId == id
-            select new Account
+        IQueryable<Account> queryable = _context
+            .Accounts.Where(account => account.AccountId == id)
+            .Select(account => new Account
             {
                 AccountId = account.AccountId,
                 Username = account.Username,
                 Password = account.Password,
                 EmployeeId = account.EmployeeId,
-            };
-
-        return await query.FirstOrDefaultAsync();
+            });
+        return await queryable.FirstOrDefaultAsync();
     }
 }

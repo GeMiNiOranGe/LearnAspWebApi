@@ -18,14 +18,14 @@ public class EmployeeController(
     [HttpGet(Name = "GetEmployees")]
     public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
     {
-        IEnumerable<Employee> accounts = await _useCase.GetEmployeesAsync();
-        return Ok(accounts);
+        IEnumerable<Employee> employees = await _useCase.GetEmployeesAsync();
+        return Ok(employees);
     }
 
     [HttpGet("{id}", Name = "GetEmployeeById")]
     public async Task<ActionResult<Employee>> GetEmployeeById(string id)
     {
-        Employee? account = await _useCase.GetEmployeeByIdAsync(id);
-        return account == null ? NotFound() : Ok(account);
+        Employee? employee = await _useCase.GetEmployeeByIdAsync(id);
+        return employee == null ? NotFound() : Ok(employee);
     }
 }

@@ -12,29 +12,27 @@ public class EmployeeRepository(LearnAspWebApiContext context)
 
     public async Task<IEnumerable<Employee>> GetEmployeesAsync()
     {
-        return await (
-            from employee in _context.Employees
-            select new Employee
+        IQueryable<Employee> queryable = _context.Employees.Select(
+            employee => new Employee
             {
                 EmployeeId = employee.EmployeeId,
                 Name = employee.Name,
                 DateOfBirth = employee.DateOfBirth,
             }
-        ).ToListAsync();
+        );
+        return await queryable.ToListAsync();
     }
 
     public async Task<Employee?> GetEmployeeByIdAsync(string id)
     {
-        IQueryable<Employee> query =
-            from employee in _context.Employees
-            where employee.EmployeeId == id
-            select new Employee
+        IQueryable<Employee> queryable = _context
+            .Employees.Where(employee => employee.EmployeeId == id)
+            .Select(employee => new Employee
             {
                 EmployeeId = employee.EmployeeId,
                 Name = employee.Name,
                 DateOfBirth = employee.DateOfBirth,
-            };
-
-        return await query.FirstOrDefaultAsync();
+            });
+        return await queryable.FirstOrDefaultAsync();
     }
 }
