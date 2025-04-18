@@ -35,4 +35,16 @@ public class EmployeeRepository(LearnAspWebApiContext context)
             });
         return await queryable.FirstOrDefaultAsync();
     }
+
+    public async Task CreateEmployeeAsync(Employee emp)
+    {
+        Models.Employee employee = new()
+        {
+            EmployeeId = emp.EmployeeId,
+            Name = emp.Name,
+            DateOfBirth = emp.DateOfBirth,
+        };
+        _context.Employees.Add(employee);
+        await _context.SaveChangesAsync();
+    }
 }
