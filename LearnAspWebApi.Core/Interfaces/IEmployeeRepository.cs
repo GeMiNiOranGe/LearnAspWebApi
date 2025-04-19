@@ -11,4 +11,6 @@ public interface IEmployeeRepository
     Task CreateEmployeeAsync(Employee emp);
 
     Task UpdateEmployeeAsync(Employee emp);
+
+    Task DeleteEmployeeAsync(Employee emp);
 }

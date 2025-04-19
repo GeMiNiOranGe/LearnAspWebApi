@@ -45,4 +45,16 @@ public class EmployeeUseCase(IEmployeeRepository repository) : IEmployeeUseCase
         await _repository.UpdateEmployeeAsync(employee);
         return true;
     }
+
+    public async Task<bool> DeleteEmployeeAsync(string id)
+    {
+        Employee? employee = await _repository.GetEmployeeByIdAsync(id);
+        if (employee == null)
+        {
+            return false;
+        }
+
+        await _repository.DeleteEmployeeAsync(employee);
+        return true;
+    }
 }

@@ -60,4 +60,17 @@ public class EmployeeRepository(LearnAspWebApiContext context)
         _context.Employees.Update(employee);
         await _context.SaveChangesAsync();
     }
+
+    public async Task DeleteEmployeeAsync(Employee emp)
+    {
+        Models.Employee employee = new()
+        {
+            EmployeeId = emp.EmployeeId,
+            Name = emp.Name,
+            DateOfBirth = emp.DateOfBirth,
+        };
+
+        _context.Employees.Remove(employee);
+        await _context.SaveChangesAsync();
+    }
 }

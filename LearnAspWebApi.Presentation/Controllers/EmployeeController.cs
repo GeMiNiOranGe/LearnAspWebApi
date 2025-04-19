@@ -52,4 +52,11 @@ public class EmployeeController(
         bool updatedEmployee = await _useCase.UpdateEmployeeAsync(id, dto);
         return updatedEmployee ? NoContent() : NotFound();
     }
+
+    [HttpDelete("{id}", Name = "DeleteEmployee")]
+    public async Task<IActionResult> DeleteEmployee(string id)
+    {
+        bool deletedEmployee = await _useCase.DeleteEmployeeAsync(id);
+        return deletedEmployee ? NoContent() : NotFound();
+    }
 }
