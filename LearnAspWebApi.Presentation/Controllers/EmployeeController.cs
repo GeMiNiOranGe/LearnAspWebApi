@@ -45,4 +45,11 @@ public class EmployeeController(
             createdEmployee
         );
     }
+
+    [HttpPut("{id}", Name = "UpdateEmployee")]
+    public async Task<IActionResult> UpdateEmployee(string id, EmployeeDto dto)
+    {
+        bool updatedEmployee = await _useCase.UpdateEmployeeAsync(id, dto);
+        return updatedEmployee ? NoContent() : NotFound();
+    }
 }

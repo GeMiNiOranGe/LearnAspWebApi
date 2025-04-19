@@ -10,4 +10,6 @@ public interface IEmployeeUseCase
     Task<Employee?> GetEmployeeByIdAsync(string id);
 
     Task<Employee> CreateEmployeeAsync(EmployeeDto dto);
+
+    Task<bool> UpdateEmployeeAsync(string id, EmployeeDto dto);
 }

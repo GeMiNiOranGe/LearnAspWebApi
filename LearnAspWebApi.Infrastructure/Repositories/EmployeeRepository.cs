@@ -47,4 +47,17 @@ public class EmployeeRepository(LearnAspWebApiContext context)
         _context.Employees.Add(employee);
         await _context.SaveChangesAsync();
     }
+
+    public async Task UpdateEmployeeAsync(Employee emp)
+    {
+        Models.Employee employee = new()
+        {
+            EmployeeId = emp.EmployeeId,
+            Name = emp.Name,
+            DateOfBirth = emp.DateOfBirth,
+        };
+
+        _context.Employees.Update(employee);
+        await _context.SaveChangesAsync();
+    }
 }

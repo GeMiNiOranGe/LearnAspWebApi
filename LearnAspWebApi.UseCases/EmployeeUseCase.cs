@@ -29,4 +29,20 @@ public class EmployeeUseCase(IEmployeeRepository repository) : IEmployeeUseCase
         await _repository.CreateEmployeeAsync(employee);
         return employee;
     }
+
+    public async Task<bool> UpdateEmployeeAsync(string id, EmployeeDto dto)
+    {
+        Employee? employee = await _repository.GetEmployeeByIdAsync(id);
+        if (employee == null)
+        {
+            return false;
+        }
+
+        employee.EmployeeId = dto.EmployeeId;
+        employee.Name = dto.Name;
+        employee.DateOfBirth = dto.DateOfBirth;
+
+        await _repository.UpdateEmployeeAsync(employee);
+        return true;
+    }
 }
