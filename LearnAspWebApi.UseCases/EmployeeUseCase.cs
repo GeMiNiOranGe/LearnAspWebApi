@@ -46,6 +46,33 @@ public class EmployeeUseCase(IEmployeeRepository repository) : IEmployeeUseCase
         return true;
     }
 
+    public async Task<bool> PatchEmployeeAsync(string id, PatchEmployeeDto dto)
+    {
+        Employee? employee = await _repository.GetEmployeeByIdAsync(id);
+        if (employee == null)
+        {
+            return false;
+        }
+
+        if (!string.IsNullOrWhiteSpace(dto.EmployeeId))
+        {
+            employee.EmployeeId = dto.EmployeeId;
+        }
+
+        if (!string.IsNullOrWhiteSpace(dto.Name))
+        {
+            employee.Name = dto.Name;
+        }
+
+        if (dto.DateOfBirth.HasValue)
+        {
+            employee.DateOfBirth = dto.DateOfBirth.GetValueOrDefault();
+        }
+
+        await _repository.UpdateEmployeeAsync(employee);
+        return true;
+    }
+
     public async Task<bool> DeleteEmployeeAsync(string id)
     {
         Employee? employee = await _repository.GetEmployeeByIdAsync(id);

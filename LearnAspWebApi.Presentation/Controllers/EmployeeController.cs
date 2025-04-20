@@ -53,6 +53,16 @@ public class EmployeeController(
         return updatedEmployee ? NoContent() : NotFound();
     }
 
+    [HttpPatch("{id}", Name = "PatchEmployee")]
+    public async Task<IActionResult> PatchEmployee(
+        string id,
+        PatchEmployeeDto dto
+    )
+    {
+        bool deletedEmployee = await _useCase.PatchEmployeeAsync(id, dto);
+        return deletedEmployee ? NoContent() : NotFound();
+    }
+
     [HttpDelete("{id}", Name = "DeleteEmployee")]
     public async Task<IActionResult> DeleteEmployee(string id)
     {

@@ -13,5 +13,7 @@ public interface IEmployeeUseCase
 
     Task<bool> UpdateEmployeeAsync(string id, EmployeeDto dto);
 
+    Task<bool> PatchEmployeeAsync(string id, PatchEmployeeDto dto);
+
     Task<bool> DeleteEmployeeAsync(string id);
 }
