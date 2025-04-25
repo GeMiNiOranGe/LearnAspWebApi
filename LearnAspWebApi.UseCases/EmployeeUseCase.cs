@@ -1,12 +1,15 @@
+using AutoMapper;
 using LearnAspWebApi.Core.Entities;
 using LearnAspWebApi.Core.Interfaces;
 using LearnAspWebApi.DTOs;
 
 namespace LearnAspWebApi.UseCases;
 
-public class EmployeeUseCase(IEmployeeRepository repository) : IEmployeeUseCase
+public class EmployeeUseCase(IEmployeeRepository repository, IMapper mapper)
+    : IEmployeeUseCase
 {
     private readonly IEmployeeRepository _repository = repository;
+    private readonly IMapper _mapper = mapper;
 
     public async Task<IEnumerable<Employee>> GetEmployeesAsync()
     {
@@ -20,12 +23,7 @@ public class EmployeeUseCase(IEmployeeRepository repository) : IEmployeeUseCase
 
     public async Task<Employee> CreateEmployeeAsync(EmployeeDto dto)
     {
-        Employee employee = new()
-        {
-            EmployeeId = dto.EmployeeId,
-            Name = dto.Name,
-            DateOfBirth = dto.DateOfBirth,
-        };
+        Employee employee = _mapper.Map<Employee>(dto);
         await _repository.CreateEmployeeAsync(employee);
         return employee;
     }
@@ -38,9 +36,7 @@ public class EmployeeUseCase(IEmployeeRepository repository) : IEmployeeUseCase
             return false;
         }
 
-        employee.EmployeeId = dto.EmployeeId;
-        employee.Name = dto.Name;
-        employee.DateOfBirth = dto.DateOfBirth;
+        _mapper.Map(dto, employee);
 
         await _repository.UpdateEmployeeAsync(employee);
         return true;

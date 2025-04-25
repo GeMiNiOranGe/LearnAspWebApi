@@ -1,4 +1,5 @@
 using LearnAspWebApi.Core.Interfaces;
+using LearnAspWebApi.UseCases.Mappings;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace LearnAspWebApi.UseCases;
@@ -12,6 +13,9 @@ public static class DependencyInjection
         // Add services to the container.
         services.AddScoped<IAccountUseCase, AccountUseCase>();
         services.AddScoped<IEmployeeUseCase, EmployeeUseCase>();
+
+        // Add AutoMapper
+        services.AddAutoMapper(typeof(EmployeeProfile).Assembly);
 
         return services;
     }

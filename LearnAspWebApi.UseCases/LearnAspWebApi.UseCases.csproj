@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\LearnAspWebApi.Core\LearnAspWebApi.Core.csproj" />
     <ProjectReference Include="..\LearnAspWebApi.DTOs\LearnAspWebApi.DTOs.csproj" />
   </ItemGroup>
