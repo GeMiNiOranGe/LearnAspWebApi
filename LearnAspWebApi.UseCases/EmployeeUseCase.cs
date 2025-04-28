@@ -16,7 +16,7 @@ public class EmployeeUseCase(IEmployeeRepository repository, IMapper mapper)
         return await _repository.GetEmployeesAsync();
     }
 
-    public async Task<Employee?> GetEmployeeByIdAsync(string id)
+    public async Task<Employee?> GetEmployeeByIdAsync(int id)
     {
         return await _repository.GetEmployeeByIdAsync(id);
     }
@@ -28,7 +28,7 @@ public class EmployeeUseCase(IEmployeeRepository repository, IMapper mapper)
         return employee;
     }
 
-    public async Task<bool> UpdateEmployeeAsync(string id, EmployeeDto dto)
+    public async Task<bool> UpdateEmployeeAsync(int id, EmployeeDto dto)
     {
         Employee? employee = await _repository.GetEmployeeByIdAsync(id);
         if (employee == null)
@@ -42,7 +42,7 @@ public class EmployeeUseCase(IEmployeeRepository repository, IMapper mapper)
         return true;
     }
 
-    public async Task<bool> PatchEmployeeAsync(string id, PatchEmployeeDto dto)
+    public async Task<bool> PatchEmployeeAsync(int id, PatchEmployeeDto dto)
     {
         Employee? employee = await _repository.GetEmployeeByIdAsync(id);
         if (employee == null)
@@ -50,9 +50,9 @@ public class EmployeeUseCase(IEmployeeRepository repository, IMapper mapper)
             return false;
         }
 
-        if (!string.IsNullOrWhiteSpace(dto.EmployeeId))
+        if (!string.IsNullOrWhiteSpace(dto.EmployeeCode))
         {
-            employee.EmployeeId = dto.EmployeeId;
+            employee.EmployeeCode = dto.EmployeeCode;
         }
 
         if (!string.IsNullOrWhiteSpace(dto.Name))
@@ -69,7 +69,7 @@ public class EmployeeUseCase(IEmployeeRepository repository, IMapper mapper)
         return true;
     }
 
-    public async Task<bool> DeleteEmployeeAsync(string id)
+    public async Task<bool> DeleteEmployeeAsync(int id)
     {
         Employee? employee = await _repository.GetEmployeeByIdAsync(id);
         if (employee == null)

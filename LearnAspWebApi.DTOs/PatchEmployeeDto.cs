@@ -2,7 +2,7 @@ namespace LearnAspWebApi.DTOs;
 
 public class PatchEmployeeDto
 {
-    public string? EmployeeId { get; set; }
+    public string? EmployeeCode { get; set; }
 
     public string? Name { get; set; }
 

@@ -24,7 +24,7 @@ public class EmployeeController(
     }
 
     [HttpGet("{id}", Name = "GetEmployeeById")]
-    public async Task<ActionResult<Employee>> GetEmployeeById(string id)
+    public async Task<ActionResult<Employee>> GetEmployeeById(int id)
     {
         Employee? employee = await _useCase.GetEmployeeByIdAsync(id);
         return employee == null ? NotFound() : Ok(employee);
@@ -47,24 +47,21 @@ public class EmployeeController(
     }
 
     [HttpPut("{id}", Name = "UpdateEmployee")]
-    public async Task<IActionResult> UpdateEmployee(string id, EmployeeDto dto)
+    public async Task<IActionResult> UpdateEmployee(int id, EmployeeDto dto)
     {
         bool updatedEmployee = await _useCase.UpdateEmployeeAsync(id, dto);
         return updatedEmployee ? NoContent() : NotFound();
     }
 
     [HttpPatch("{id}", Name = "PatchEmployee")]
-    public async Task<IActionResult> PatchEmployee(
-        string id,
-        PatchEmployeeDto dto
-    )
+    public async Task<IActionResult> PatchEmployee(int id, PatchEmployeeDto dto)
     {
         bool deletedEmployee = await _useCase.PatchEmployeeAsync(id, dto);
         return deletedEmployee ? NoContent() : NotFound();
     }
 
     [HttpDelete("{id}", Name = "DeleteEmployee")]
-    public async Task<IActionResult> DeleteEmployee(string id)
+    public async Task<IActionResult> DeleteEmployee(int id)
     {
         bool deletedEmployee = await _useCase.DeleteEmployeeAsync(id);
         return deletedEmployee ? NoContent() : NotFound();

@@ -16,6 +16,7 @@ public class EmployeeRepository(LearnAspWebApiContext context)
             employee => new Employee
             {
                 EmployeeId = employee.EmployeeId,
+                EmployeeCode = employee.EmployeeCode,
                 Name = employee.Name,
                 DateOfBirth = employee.DateOfBirth,
             }
@@ -23,13 +24,14 @@ public class EmployeeRepository(LearnAspWebApiContext context)
         return await queryable.ToListAsync();
     }
 
-    public async Task<Employee?> GetEmployeeByIdAsync(string id)
+    public async Task<Employee?> GetEmployeeByIdAsync(int id)
     {
         IQueryable<Employee> queryable = _context
             .Employees.Where(employee => employee.EmployeeId == id)
             .Select(employee => new Employee
             {
                 EmployeeId = employee.EmployeeId,
+                EmployeeCode = employee.EmployeeCode,
                 Name = employee.Name,
                 DateOfBirth = employee.DateOfBirth,
             });
@@ -40,7 +42,7 @@ public class EmployeeRepository(LearnAspWebApiContext context)
     {
         Models.Employee employee = new()
         {
-            EmployeeId = emp.EmployeeId,
+            EmployeeCode = emp.EmployeeCode,
             Name = emp.Name,
             DateOfBirth = emp.DateOfBirth,
         };
@@ -53,6 +55,7 @@ public class EmployeeRepository(LearnAspWebApiContext context)
         Models.Employee employee = new()
         {
             EmployeeId = emp.EmployeeId,
+            EmployeeCode = emp.EmployeeCode,
             Name = emp.Name,
             DateOfBirth = emp.DateOfBirth,
         };
@@ -66,6 +69,7 @@ public class EmployeeRepository(LearnAspWebApiContext context)
         Models.Employee employee = new()
         {
             EmployeeId = emp.EmployeeId,
+            EmployeeCode = emp.EmployeeCode,
             Name = emp.Name,
             DateOfBirth = emp.DateOfBirth,
         };

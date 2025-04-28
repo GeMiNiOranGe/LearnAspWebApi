@@ -5,7 +5,9 @@ namespace LearnAspWebApi.Infrastructure.Models;
 
 public partial class Employee
 {
-    public string EmployeeId { get; set; } = null!;
+    public int EmployeeId { get; set; }
+
+    public string EmployeeCode { get; set; } = null!;
 
     public string Name { get; set; } = null!;
 

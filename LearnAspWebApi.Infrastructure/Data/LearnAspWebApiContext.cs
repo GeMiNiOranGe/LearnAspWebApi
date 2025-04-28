@@ -26,10 +26,6 @@ public partial class LearnAspWebApiContext : DbContext
 
             entity.HasIndex(e => e.Username, "UK_Username").IsUnique();
 
-            entity
-                .Property(e => e.EmployeeId)
-                .HasMaxLength(10)
-                .IsUnicode(false);
             entity.Property(e => e.Password).HasMaxLength(255).IsUnicode(false);
             entity.Property(e => e.Username).HasMaxLength(255).IsUnicode(false);
 
@@ -46,7 +42,7 @@ public partial class LearnAspWebApiContext : DbContext
             entity.ToTable("Employee");
 
             entity
-                .Property(e => e.EmployeeId)
+                .Property(e => e.EmployeeCode)
                 .HasMaxLength(10)
                 .IsUnicode(false);
             entity.Property(e => e.Name).HasMaxLength(50);

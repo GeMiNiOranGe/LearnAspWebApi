@@ -7,13 +7,13 @@ public interface IEmployeeUseCase
 {
     Task<IEnumerable<Employee>> GetEmployeesAsync();
 
-    Task<Employee?> GetEmployeeByIdAsync(string id);
+    Task<Employee?> GetEmployeeByIdAsync(int id);
 
     Task<Employee> CreateEmployeeAsync(EmployeeDto dto);
 
-    Task<bool> UpdateEmployeeAsync(string id, EmployeeDto dto);
+    Task<bool> UpdateEmployeeAsync(int id, EmployeeDto dto);
 
-    Task<bool> PatchEmployeeAsync(string id, PatchEmployeeDto dto);
+    Task<bool> PatchEmployeeAsync(int id, PatchEmployeeDto dto);
 
-    Task<bool> DeleteEmployeeAsync(string id);
+    Task<bool> DeleteEmployeeAsync(int id);
 }

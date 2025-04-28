@@ -14,7 +14,8 @@ USE [LearnAspWebApi]
 GO
 
 CREATE TABLE [dbo].[Employee] (
-    [EmployeeId]    [varchar](10)   NOT NULL,
+    [EmployeeId]    [int]           NOT NULL IDENTITY(1, 1),
+    [EmployeeCode]  [varchar](10)   NOT NULL,
     [Name]          [nvarchar](50)  NOT NULL,
     [DateOfBirth]   [date]          NOT NULL,
 );
@@ -24,7 +25,7 @@ CREATE TABLE [dbo].[Account] (
     [Username]      [varchar](255)  NOT NULL,
     [Password]      [varchar](255)  NOT NULL,
 
-    [EmployeeId]    [varchar](10)   NOT NULL,
+    [EmployeeId]    [int]           NOT NULL,
 );
 GO
 
@@ -46,29 +47,29 @@ CONSTRAINT [FK_Account_Employee]
 GO
 
 INSERT INTO [dbo].[Employee]
-        ([EmployeeId],  [Name],                 [DateOfBirth])
-VALUES  ('EMP00001',    N'Trần Tuấn Toàn',      '1975-09-21')
-     ,  ('EMP00002',    N'Phan Tuấn Tài',       '1990-03-21')
-     ,  ('EMP00003',    N'Trần Thị Ngọc Châu',  '1985-09-01')
-     ,  ('EMP00004',    N'Trần Anh Tuấn',       '1995-05-19')
-     ,  ('EMP00005',    N'Trần Đình Vũ',        '1990-03-15')
-     ,  ('EMP00006',    N'Trương Mai Anh',      '1980-05-19')
-     ,  ('EMP00007',    N'Vương Trắc',          '1987-01-17')
-     ,  ('EMP00008',    N'Phan Ngô Ngọc Lam',   '2000-04-01')
-     ,  ('EMP00009',    N'Huỳnh Vũ',            '1999-07-28')
-     ,  ('EMP00010',    N'Tố Huỳnh Nga',        '1982-07-18')
+        ([EmployeeCode],    [Name],                 [DateOfBirth])
+VALUES  ('EMP00001',        N'Trần Tuấn Toàn',      '1975-09-21')
+     ,  ('EMP00002',        N'Phan Tuấn Tài',       '1990-03-21')
+     ,  ('EMP00003',        N'Trần Thị Ngọc Châu',  '1985-09-01')
+     ,  ('EMP00004',        N'Trần Anh Tuấn',       '1995-05-19')
+     ,  ('EMP00005',        N'Trần Đình Vũ',        '1990-03-15')
+     ,  ('EMP00006',        N'Trương Mai Anh',      '1980-05-19')
+     ,  ('EMP00007',        N'Vương Trắc',          '1987-01-17')
+     ,  ('EMP00008',        N'Phan Ngô Ngọc Lam',   '2000-04-01')
+     ,  ('EMP00009',        N'Huỳnh Vũ',            '1999-07-28')
+     ,  ('EMP00010',        N'Tố Huỳnh Nga',        '1982-07-18')
 GO
 
 INSERT INTO [dbo].[Account]
         ([Username],    [Password], [EmployeeId])
-VALUES  ('tvtoan',      'EMP00001', 'EMP00001')
-     ,  ('pttai',       'EMP00002', 'EMP00002')
-     ,  ('ttnchau',     'EMP00003', 'EMP00003')
-     ,  ('tatuan',      'EMP00004', 'EMP00004')
-     ,  ('tdvu',        'EMP00005', 'EMP00005')
-     ,  ('tmanh',       'EMP00006', 'EMP00006')
-     ,  ('vtrac',       'EMP00007', 'EMP00007')
-     ,  ('pnnlam',      'EMP00008', 'EMP00008')
-     ,  ('hvu',         'EMP00009', 'EMP00009')
-     ,  ('thnga',       'EMP00010', 'EMP00010')
+VALUES  ('tvtoan',      'EMP00001', 1)
+     ,  ('pttai',       'EMP00002', 2)
+     ,  ('ttnchau',     'EMP00003', 3)
+     ,  ('tatuan',      'EMP00004', 4)
+     ,  ('tdvu',        'EMP00005', 5)
+     ,  ('tmanh',       'EMP00006', 6)
+     ,  ('vtrac',       'EMP00007', 7)
+     ,  ('pnnlam',      'EMP00008', 8)
+     ,  ('hvu',         'EMP00009', 9)
+     ,  ('thnga',       'EMP00010', 10)
 GO

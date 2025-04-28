@@ -171,7 +171,15 @@ dotnet add LearnAspWebApi.Infrastructure package Microsoft.EntityFrameworkCore -
 ```
 
 Create a dbcontext, [how to scaffold](https://learn.microsoft.com/en-us/ef/core/cli/dotnet#dotnet-ef-dbcontext-scaffold).
-```bash
+> Note: Since `dotnet ef` is a tool, you need to set a temporary environment variable in PowerShell before running `dotnet ef dbcontext scaffold ...` (if you're using PowerShell to run the command).
+
+Use the following command to set it:
+```powershell
+$env:ASPNETCORE_ENVIRONMENT="Development"
+```
+
+Next
+```powershell
 dotnet ef dbcontext scaffold `
   "Name=ConnectionStrings:Development" `
   Microsoft.EntityFrameworkCore.SqlServer `
