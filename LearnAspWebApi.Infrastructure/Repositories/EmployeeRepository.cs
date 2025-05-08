@@ -38,7 +38,7 @@ public class EmployeeRepository(LearnAspWebApiContext context)
         return await queryable.FirstOrDefaultAsync();
     }
 
-    public async Task CreateEmployeeAsync(Employee emp)
+    public async Task<Employee> CreateEmployeeAsync(Employee emp)
     {
         Models.Employee employee = new()
         {
@@ -48,6 +48,14 @@ public class EmployeeRepository(LearnAspWebApiContext context)
         };
         _context.Employees.Add(employee);
         await _context.SaveChangesAsync();
+
+        return new Employee
+        {
+            EmployeeId = employee.EmployeeId,
+            EmployeeCode = employee.EmployeeCode,
+            Name = employee.Name,
+            DateOfBirth = employee.DateOfBirth,
+        };
     }
 
     public async Task UpdateEmployeeAsync(Employee emp)

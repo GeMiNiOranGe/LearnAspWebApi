@@ -24,7 +24,7 @@ public class EmployeeUseCase(IEmployeeRepository repository, IMapper mapper)
     public async Task<Employee> CreateEmployeeAsync(EmployeeDto dto)
     {
         Employee employee = _mapper.Map<Employee>(dto);
-        await _repository.CreateEmployeeAsync(employee);
+        employee = await _repository.CreateEmployeeAsync(employee);
         return employee;
     }
 
