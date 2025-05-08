@@ -26,16 +26,16 @@ public class EmployeeRepository(LearnAspWebApiContext context)
 
     public async Task<Employee?> GetEmployeeByIdAsync(int id)
     {
-        IQueryable<Employee> queryable = _context
-            .Employees.Where(employee => employee.EmployeeId == id)
-            .Select(employee => new Employee
+        Models.Employee? employee = await _context.Employees.FindAsync(id);
+        return employee == null
+            ? null
+            : new Employee
             {
                 EmployeeId = employee.EmployeeId,
                 EmployeeCode = employee.EmployeeCode,
                 Name = employee.Name,
                 DateOfBirth = employee.DateOfBirth,
-            });
-        return await queryable.FirstOrDefaultAsync();
+            };
     }
 
     public async Task<Employee> CreateEmployeeAsync(Employee emp)
@@ -60,27 +60,30 @@ public class EmployeeRepository(LearnAspWebApiContext context)
 
     public async Task UpdateEmployeeAsync(Employee emp)
     {
-        Models.Employee employee = new()
+        Models.Employee? employee = await _context.Employees.FindAsync(
+            emp.EmployeeId
+        );
+        if (employee == null)
         {
-            EmployeeId = emp.EmployeeId,
-            EmployeeCode = emp.EmployeeCode,
-            Name = emp.Name,
-            DateOfBirth = emp.DateOfBirth,
-        };
+            return;
+        }
 
-        _context.Employees.Update(employee);
+        employee.EmployeeCode = emp.EmployeeCode;
+        employee.Name = emp.Name;
+        employee.DateOfBirth = emp.DateOfBirth;
+
         await _context.SaveChangesAsync();
     }
 
     public async Task DeleteEmployeeAsync(Employee emp)
     {
-        Models.Employee employee = new()
+        Models.Employee? employee = await _context.Employees.FindAsync(
+            emp.EmployeeId
+        );
+        if (employee == null)
         {
-            EmployeeId = emp.EmployeeId,
-            EmployeeCode = emp.EmployeeCode,
-            Name = emp.Name,
-            DateOfBirth = emp.DateOfBirth,
-        };
+            return;
+        }
 
         _context.Employees.Remove(employee);
         await _context.SaveChangesAsync();
