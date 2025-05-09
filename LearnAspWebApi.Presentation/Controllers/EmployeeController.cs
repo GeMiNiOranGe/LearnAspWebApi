@@ -18,7 +18,7 @@ public class EmployeeController(
     private readonly IEmployeeUseCase _useCase = useCase;
 
     [HttpGet(Name = "GetEmployees")]
-    [ProducesResponseType<Employee>(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
     {
         IEnumerable<Employee> employees = await _useCase.GetEmployeesAsync();
