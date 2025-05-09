@@ -26,66 +26,68 @@ public class EmployeeRepository(LearnAspWebApiContext context)
 
     public async Task<Employee?> GetEmployeeByIdAsync(int id)
     {
-        Models.Employee? employee = await _context.Employees.FindAsync(id);
-        return employee == null
+        Models.Employee? existingEmployee = await _context.Employees.FindAsync(
+            id
+        );
+        return existingEmployee == null
             ? null
             : new Employee
             {
-                EmployeeId = employee.EmployeeId,
-                EmployeeCode = employee.EmployeeCode,
-                Name = employee.Name,
-                DateOfBirth = employee.DateOfBirth,
+                EmployeeId = existingEmployee.EmployeeId,
+                EmployeeCode = existingEmployee.EmployeeCode,
+                Name = existingEmployee.Name,
+                DateOfBirth = existingEmployee.DateOfBirth,
             };
     }
 
-    public async Task<Employee> CreateEmployeeAsync(Employee emp)
+    public async Task<Employee> CreateEmployeeAsync(Employee employee)
     {
-        Models.Employee employee = new()
+        Models.Employee newEmployee = new()
         {
-            EmployeeCode = emp.EmployeeCode,
-            Name = emp.Name,
-            DateOfBirth = emp.DateOfBirth,
-        };
-        _context.Employees.Add(employee);
-        await _context.SaveChangesAsync();
-
-        return new Employee
-        {
-            EmployeeId = employee.EmployeeId,
             EmployeeCode = employee.EmployeeCode,
             Name = employee.Name,
             DateOfBirth = employee.DateOfBirth,
         };
+        _context.Employees.Add(newEmployee);
+        await _context.SaveChangesAsync();
+
+        return new Employee
+        {
+            EmployeeId = newEmployee.EmployeeId,
+            EmployeeCode = newEmployee.EmployeeCode,
+            Name = newEmployee.Name,
+            DateOfBirth = newEmployee.DateOfBirth,
+        };
     }
 
-    public async Task UpdateEmployeeAsync(Employee emp)
+    public async Task UpdateEmployeeAsync(Employee employee)
     {
-        Models.Employee? employee = await _context.Employees.FindAsync(
-            emp.EmployeeId
+        Models.Employee? existingEmployee = await _context.Employees.FindAsync(
+            employee.EmployeeId
         );
-        if (employee == null)
+        if (existingEmployee == null)
         {
             return;
         }
 
-        employee.EmployeeCode = emp.EmployeeCode;
-        employee.Name = emp.Name;
-        employee.DateOfBirth = emp.DateOfBirth;
+        existingEmployee.EmployeeCode = employee.EmployeeCode;
+        existingEmployee.Name = employee.Name;
+        existingEmployee.DateOfBirth = employee.DateOfBirth;
 
         await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteEmployeeAsync(Employee emp)
+    public async Task DeleteEmployeeAsync(Employee employee)
     {
-        Models.Employee? employee = await _context.Employees.FindAsync(
-            emp.EmployeeId
+        Models.Employee? existingEmployee = await _context.Employees.FindAsync(
+            employee.EmployeeId
         );
-        if (employee == null)
+        if (existingEmployee == null)
         {
             return;
         }
 
-        _context.Employees.Remove(employee);
+        _context.Employees.Remove(existingEmployee);
         await _context.SaveChangesAsync();
     }
 }
