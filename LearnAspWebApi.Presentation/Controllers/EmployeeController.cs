@@ -1,6 +1,7 @@
 using LearnAspWebApi.Core.Entities;
 using LearnAspWebApi.Core.Interfaces;
 using LearnAspWebApi.DTOs;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -17,6 +18,7 @@ public class EmployeeController(
     private readonly IEmployeeUseCase _useCase = useCase;
 
     [HttpGet(Name = "GetEmployees")]
+    [ProducesResponseType<Employee>(StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
     {
         IEnumerable<Employee> employees = await _useCase.GetEmployeesAsync();
@@ -24,6 +26,8 @@ public class EmployeeController(
     }
 
     [HttpGet("{id}", Name = "GetEmployeeById")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<Employee>> GetEmployeeById(int id)
     {
         Employee? employee = await _useCase.GetEmployeeByIdAsync(id);
@@ -31,6 +35,8 @@ public class EmployeeController(
     }
 
     [HttpPost(Name = "CreateEmployee")]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<Employee>> CreateEmployee(EmployeeDto dto)
     {
         if (!ModelState.IsValid)
@@ -47,6 +53,8 @@ public class EmployeeController(
     }
 
     [HttpPut("{id}", Name = "UpdateEmployee")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> UpdateEmployee(int id, EmployeeDto dto)
     {
         bool updatedEmployee = await _useCase.UpdateEmployeeAsync(id, dto);
@@ -54,6 +62,8 @@ public class EmployeeController(
     }
 
     [HttpPatch("{id}", Name = "PatchEmployee")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> PatchEmployee(int id, PatchEmployeeDto dto)
     {
         bool deletedEmployee = await _useCase.PatchEmployeeAsync(id, dto);
@@ -61,6 +71,8 @@ public class EmployeeController(
     }
 
     [HttpDelete("{id}", Name = "DeleteEmployee")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> DeleteEmployee(int id)
     {
         bool deletedEmployee = await _useCase.DeleteEmployeeAsync(id);
