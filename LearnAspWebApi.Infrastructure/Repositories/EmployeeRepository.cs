@@ -1,3 +1,4 @@
+using AutoMapper;
 using LearnAspWebApi.Core.Entities;
 using LearnAspWebApi.Core.Interfaces;
 using LearnAspWebApi.Infrastructure.Data;
@@ -5,21 +6,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LearnAspWebApi.Infrastructure.Repositories;
 
-public class EmployeeRepository(LearnAspWebApiContext context)
+public class EmployeeRepository(LearnAspWebApiContext context, IMapper mapper)
     : IEmployeeRepository
 {
     private readonly LearnAspWebApiContext _context = context;
+    private readonly IMapper _mapper = mapper;
 
     public async Task<IEnumerable<Employee>> GetEmployeesAsync()
     {
-        IQueryable<Employee> queryable = _context.Employees.Select(
-            employee => new Employee
-            {
-                EmployeeId = employee.EmployeeId,
-                EmployeeCode = employee.EmployeeCode,
-                Name = employee.Name,
-                DateOfBirth = employee.DateOfBirth,
-            }
+        IQueryable<Employee> queryable = _context.Employees.Select(employee =>
+            _mapper.Map<Employee>(employee)
         );
         return await queryable.ToListAsync();
     }
@@ -31,33 +27,16 @@ public class EmployeeRepository(LearnAspWebApiContext context)
         );
         return existingEmployee == null
             ? null
-            : new Employee
-            {
-                EmployeeId = existingEmployee.EmployeeId,
-                EmployeeCode = existingEmployee.EmployeeCode,
-                Name = existingEmployee.Name,
-                DateOfBirth = existingEmployee.DateOfBirth,
-            };
+            : _mapper.Map<Employee>(existingEmployee);
     }
 
     public async Task<Employee> CreateEmployeeAsync(Employee employee)
     {
-        Models.Employee newEmployee = new()
-        {
-            EmployeeCode = employee.EmployeeCode,
-            Name = employee.Name,
-            DateOfBirth = employee.DateOfBirth,
-        };
+        Models.Employee newEmployee = _mapper.Map<Models.Employee>(employee);
         _context.Employees.Add(newEmployee);
         await _context.SaveChangesAsync();
 
-        return new Employee
-        {
-            EmployeeId = newEmployee.EmployeeId,
-            EmployeeCode = newEmployee.EmployeeCode,
-            Name = newEmployee.Name,
-            DateOfBirth = newEmployee.DateOfBirth,
-        };
+        return _mapper.Map<Employee>(newEmployee);
     }
 
     public async Task UpdateEmployeeAsync(Employee employee)
@@ -70,9 +49,7 @@ public class EmployeeRepository(LearnAspWebApiContext context)
             return;
         }
 
-        existingEmployee.EmployeeCode = employee.EmployeeCode;
-        existingEmployee.Name = employee.Name;
-        existingEmployee.DateOfBirth = employee.DateOfBirth;
+        _mapper.Map(employee, existingEmployee);
 
         await _context.SaveChangesAsync();
     }

@@ -1,5 +1,6 @@
 using LearnAspWebApi.Core.Interfaces;
 using LearnAspWebApi.Infrastructure.Data;
+using LearnAspWebApi.Infrastructure.Mappings;
 using LearnAspWebApi.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +19,9 @@ public static class DependencyInjection
 
         services.AddScoped<IAccountRepository, AccountRepository>();
         services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+
+        // Add AutoMapper
+        services.AddAutoMapper(typeof(EmployeeProfile).Assembly);
 
         return services;
     }
