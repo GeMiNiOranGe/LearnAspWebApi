@@ -25,9 +25,9 @@ public class EmployeeRepository(LearnAspWebApiContext context, IMapper mapper)
         Models.Employee? existingEmployee = await _context.Employees.FindAsync(
             id
         );
-        return existingEmployee == null
-            ? null
-            : _mapper.Map<Employee>(existingEmployee);
+        return existingEmployee != null
+            ? _mapper.Map<Employee>(existingEmployee)
+            : null;
     }
 
     public async Task<Employee> CreateEmployeeAsync(Employee employee)

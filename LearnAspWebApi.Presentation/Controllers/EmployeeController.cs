@@ -66,8 +66,8 @@ public class EmployeeController(
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> PatchEmployee(int id, PatchEmployeeDto dto)
     {
-        bool deletedEmployee = await _useCase.PatchEmployeeAsync(id, dto);
-        return deletedEmployee ? NoContent() : NotFound();
+        bool patchedEmployee = await _useCase.PatchEmployeeAsync(id, dto);
+        return patchedEmployee ? NoContent() : NotFound();
     }
 
     [HttpDelete("{id}", Name = "DeleteEmployee")]
